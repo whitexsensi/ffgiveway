@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOCHAVA-VIP - Free Fire Account Giveaway</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #0a5c36;
+            --secondary-green: #128c5a;
+            --accent-green: #1ab573;
+            --light-green: #e8f5e9;
+            --dark-green: #064526;
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(to right, var(--dark-green), var(--primary-green));
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo .subtitle {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .timer-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s;
+        }
+        
+        .timer-container:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Login Section */
+        .login-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .login-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--accent-green);
+            outline: none;
+        }
+        
+        .password-mask {
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        
+        .login-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .login-btn:hover {
+            background-color: var(--secondary-green);
+        }
+        
+        .task-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid var(--primary-green);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .task-link:hover {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Task Section */
+        .task-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+        
+        .task-section h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+        
+        .task-instructions {
+            background-color: var(--light-green);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .task-btn {
+            background-color: var(--warning-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        
+        .task-btn:hover {
+            background-color: #e67e22;
+        }
+        
+        /* Bundles Section */
+        .bundles-section {
+            display: none;
+            margin: 20px 0;
+        }
+        
+        .section-title {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .bundles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .bundle-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .bundle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .bundle-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .bundle-name {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            background-color: var(--light-green);
+            color: var(--dark-green);
+        }
+        
+        .get-account {
+            background-color: var(--primary-green);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+        
+        /* Account Details Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .account-details {
+            margin-top: 20px;
+        }
+        
+        .detail-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: var(--light-green);
+            border-radius: 5px;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: var(--dark-green);
+        }
+        
+        .platform-icons {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .platform-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .facebook {
+            background-color: #3b5998;
+        }
+        
+        .google {
+            background-color: #db4437;
+        }
+        
+        .copy-btn, .try-again-btn {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .copy-btn:hover, .try-again-btn:hover {
+            background-color: var(--secondary-green);
+        }
+        
+        .try-again-btn {
+            background-color: var(--warning-color);
+        }
+        
+        .try-again-btn:hover {
+            background-color: #e67e22;
+        }
+        
+        .status-in-use {
+            color: var(--error-color);
+            font-weight: bold;
+        }
+        
+        .status-ready {
+            color: var(--success-color);
+            font-weight: bold;
+        }
+        
+        /* Account Status Messages */
+        .status-message {
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .status-error {
+            background-color: #ffebee;
+            color: var(--error-color);
+            border-left: 4px solid var(--error-color);
+        }
+        
+        .status-warning {
+            background-color: #fff8e1;
+            color: #ff8f00;
+            border-left: 4px solid #ff8f00;
+        }
+        
+        .status-info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+            border-left: 4px solid #1565c0;
+        }
+        
+        .status-success {
+            background-color: #e8f5e9;
+            color: var(--success-color);
+            border-left: 4px solid var(--success-color);
+        }
+        
+        /* Secret Timer Feature */
+        .secret-timer-container {
+            background-color: var(--dark-green);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .secret-timer {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        /* Account Limit Message */
+        .account-limit-message {
+            background-color: var(--warning-color);
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+        }
+        
+        .share-button {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://an1.com/uploads/posts/2025-10/1761724015_free-fire.png" alt="Free Fire Logo">
+                <div class="logo-text">
+                    <h1>KOCHAVA-VIP</h1>
+                    <div class="subtitle">Secret ID Giveaway Website</div>
+                </div>
+            </div>
+            <div class="timer-container" id="timerContainer">
+                <div id="timer">24:00:00</div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Login Section -->
+        <section id="loginSection" class="login-section">
+            <h2>Login to Get Free Fire Accounts</h2>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Username will auto-fill after task" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" class="password-mask" value="*****" readonly>
+                </div>
+                <button type="submit" class="login-btn" id="loginBtn" disabled>Login</button>
+            </form>
+            <a href="#" class="task-link" id="taskLink">Complete Task to Get Login Code</a>
+        </section>
+        
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>Generating your account credentials...</p>
+        </div>
+        
+        <!-- Task Section -->
+        <section id="taskSection" class="task-section">
+            <h2>Complete Task to Get Free Account</h2>
+            <div class="task-instructions">
+                <p><strong>Instructions:</strong></p>
+                <p>1. Click the "Download App" button below</p>
+                <p>2. Install and open the application</p>
+                <p>3. Return to this page after completing the task</p>
+                <p>4. You will receive a Free Fire account with random bundle</p>
+            </div>
+            <button class="task-btn" id="downloadBtn"><i class="fas fa-download"></i> Download App</button>
+            <button class="task-btn" id="taskCompleteBtn">I've Completed the Task</button>
+        </section>
+        
+        <!-- Account Limit Message -->
+        <section id="accountLimitMessage" class="account-limit-message">
+            <h3>Account Limit Reached</h3>
+            <p>You have reached the maximum account limit for this device.</p>
+            <p>Try on another device or share this website with friends!</p>
+            <button class="share-button" id="shareBtn"><i class="fas fa-share-alt"></i> Share Website</button>
+        </section>
+        
+        <!-- Secret Timer Section -->
+        <section id="secretTimer" class="secret-timer-container">
+            <h3>Secret Timer Activated!</h3>
+            <div class="secret-timer" id="secretTimerDisplay">24:00:00</div>
+            <p>Complete the task before the timer runs out to get accounts!</p>
+        </section>
+        
+        <!-- Bundles Section -->
+        <section id="bundlesSection" class="bundles-section">
+            <h2 class="section-title">Available Free Fire Accounts</h2>
+            <div class="bundles-grid" id="bundlesGrid">
+                <!-- Bundle cards will be generated by JavaScript -->
+            </div>
+        </section>
+    </div>
+    
+    <!-- Account Details Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <div id="modalContent">
+                <!-- Modal content will be generated by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KOCHAVA-VIP Free Fire Account Giveaway. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Realistic Indian usernames and passwords
+        const accountCredentials = [
+            { username: "amit.kumar521@gmail.com", password: "AmitFF!521" },
+            { username: "priya.patel1989@gmail.com", password: "PriyaFire#89" },
+            { username: "rahul.singh007@gmail.com", password: "RShooter007$" },
+            { username: "neha.verma23@gmail.com", password: "NehaXFF23@" },
+            { username: "rohitraj.pathak@gmail.com", password: "RohitBlast!9" },
+            { username: "sneha_mishra91@gmail.com", password: "Sneha_91FF*" },
+            { username: "vikash.da123@gmail.com", password: "VikashDA123^" },
+            { username: "anjali.desai44@gmail.com", password: "AnjaliGuns44!" },
+            { username: "sanjay.borkar85@gmail.com", password: "SanjayB85#FF" },
+            { username: "ritu.kapoor2000@gmail.com", password: "RituKapoor2000$" }
+        ];
+        
+        // In-game names
+        const inGameNames = [
+            "『sʜʀᴋ』•ᴮᴬᴰʙᴏʏツ",
+            "꧁༺₦Ї₦ℑ₳༻꧂",
+            "『TG』 ཌĐʀᴀɢᴏƝད°ᴵᴰᴹ°ツ",
+            "꧁ᶜ͢ᴿ͢ᴬ͢ᶻ͢ᵞ꧂",
+            "★๖ۣۜƤriͥภcͣeͫss★",
+            "『ηя』丂°Ծscαг",
+            "ᴅᴀʀᴋメᴡᴀʀʀɪᴏʀ",
+            "ᴾᴬᴷeĸo숬",
+            "亗 S T A R K 亗",
+            "༄●⃝ᶫᵒꪜe☯ᴮᴼᵞ࿐",
+            "Sᴋ᭄Sᴀʙɪʀᴮᴼˢˢ",
+            "•ＲAᎥSTQR ࿐",
+            "ƊᴏㅤσʀㅤƊɪᴇㅤ⓿❸",
+            "複| ᴋʏᴀᴍɪツ",
+            "ϟＴＥＲＲＯＲ†",
+            "ＢＡＴＭＡＮㅤ亗",
+            "OɴʟʏㅤPRIMEㅤ모",
+            "𝗫ɪɴ ᴘᴀɴᴇʟ zZz ?",
+            "𝕯𝖆𝖗𝖐 𝕬𝖓𝖌𝖊𝖑",
+            "我•|ʟᴇᴀシ™",
+            "『ＩＣＥ』",
+            "父ＲＡＭＥ",
+            "•ZETA|×L E A"
+        ];
+        
+        // Player names for error messages
+        const playerNames = ["ProGamer", "ShadowHunter", "EliteKiller", "NoobMaster", "FireStorm", "DarkKnight", "GhostRider", "AlphaWolf"];
+        
+        // Bundle data with correct GitHub image paths
+        const bundles = [
+            { id: 1, name: "Artic Blue Bundle", image: "Artic Blue Bundle.png" },
+            { id: 2, name: "Bunny Ringleader Bundle", image: "Bunny Ringleader Bundle.png" },
+            { id: 3, name: "Bunny Warrior Bundle", image: "Bunny Warrior Bundle.png" },
+            { id: 4, name: "Bushido Bundle", image: "Bushido Bundle.png" },
+            { id: 5, name: "Cobra Rage Bundle", image: "Cobra Rage Bundle.png" },
+            { id: 6, name: "Galatic Bunny Bundle", image: "Galatic Bunny Bundle.png" },
+            { id: 7, name: "Genos Suit Bundle", image: "Genos Suit Bundle.png" },
+            { id: 8, name: "Red Criminal Bundle", image: "Red Criminal Bundle.png" },
+            { id: 9, name: "Saitama Bundle", image: "Saitama Bundle.png" },
+            { id: 10, name: "The Streets Bundle", image: "The Streets Bundle.png" },
+            { id: 11, name: "Yellow Criminal Bundle", image: "Yellow Criminal Bundle.png" },
+            { id: 12, name: "Zombiefied Samurai Bundle", image: "Zombiefied Samurai Bundle.png" }
+        ];
+        
+        // Account status types
+        const statusTypes = [
+            "already_claimed",
+            "just_taken",
+            "already_linked",
+            "verification_required",
+            "giveaway_ended",
+            "temporarily_locked",
+            "already_banned",
+            "rate_limit",
+            "claim_expired",
+            "server_error"
+        ];
+        
+        // DOM Elements
+        const loginSection = document.getElementById('loginSection');
+        const taskSection = document.getElementById('taskSection');
+        const bundlesSection = document.getElementById('bundlesSection');
+        const bundlesGrid = document.getElementById('bundlesGrid');
+        const accountModal = document.getElementById('accountModal');
+        const modalContent = document.getElementById('modalContent');
+        const closeModal = document.getElementById('closeModal');
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const timerDisplay = document.getElementById('timer');
+        const timerContainer = document.getElementById('timerContainer');
+        const secretTimerSection = document.getElementById('secretTimer');
+        const secretTimerDisplay = document.getElementById('secretTimerDisplay');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const taskCompleteBtn = document.getElementById('taskCompleteBtn');
+        const accountLimitMessage = document.getElementById('accountLimitMessage');
+        const shareBtn = document.getElementById('shareBtn');
+        const taskLink = document.getElementById('taskLink');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        
+        // Timer variables
+        let timerInterval;
+        let secretTimerInterval;
+        let timerSeconds = 24 * 60 * 60; // 24 hours in seconds
+        let secretTimerSeconds = 24 * 60 * 60; // 24 hours in seconds
+        
+        // Account limit variables
+        let accountsClaimed = 0;
+        const maxAccountsPerDevice = 3;
+        let accountLimitResetTime = null;
+        
+        // Admin mode (completely hidden)
+        let adminMode = false;
+        let tapCount = 0;
+        let lastTapTime = 0;
+        
+        // Store bundle levels to maintain consistency
+        let bundleLevels = {};
+        
+        // Initialize account limit from localStorage
+        function initAccountLimit() {
+            const storedAccounts = localStorage.getItem('ffAccountsClaimed');
+            const storedResetTime = localStorage.getItem('ffAccountResetTime');
+            const storedAdminMode = localStorage.getItem('ffAdminMode');
+            
+            if (storedAccounts) {
+                accountsClaimed = parseInt(storedAccounts);
+            }
+            
+            if (storedResetTime) {
+                accountLimitResetTime = new Date(parseInt(storedResetTime));
+                
+                // Check if 3 days have passed
+                const now = new Date();
+                const timeDiff = now.getTime() - accountLimitResetTime.getTime();
+                const daysDiff = timeDiff / (1000 * 3600 * 24);
+                
+                if (daysDiff >= 3) {
+                    // Reset account limit
+                    accountsClaimed = 0;
+                    localStorage.setItem('ffAccountsClaimed', '0');
+                    accountLimitResetTime = new Date();
+                    localStorage.setItem('ffAccountResetTime', accountLimitResetTime.getTime().toString());
+                }
+            } else {
+                // Set initial reset time
+                accountLimitResetTime = new Date();
+                localStorage.setItem('ffAccountResetTime', accountLimitResetTime.getTime().toString());
+            }
+            
+            // Check admin mode
+            if (storedAdminMode === 'true') {
+                adminMode = true;
+            }
+            
+            // Show account limit message if limit reached
+            if (accountsClaimed >= maxAccountsPerDevice && !adminMode) {
+                accountLimitMessage.style.display = 'block';
+                bundlesSection.style.display = 'none';
+            }
+        }
+        
+        // Generate random account details
+        function generateRandomAccount(bundleId) {
+            const randomCredIndex = Math.floor(Math.random() * accountCredentials.length);
+            const randomNameIndex = Math.floor(Math.random() * inGameNames.length);
+            const randomBundleIndex = bundleId ? bundles.findIndex(b => b.id === bundleId) : Math.floor(Math.random() * bundles.length);
+            
+            // Use stored level or generate new one
+            const level = bundleLevels[bundleId] || Math.floor(Math.random() * 31) + 50; // 50-80
+            const accountAge = Math.floor(Math.random() * 4) + 3; // 3-6 years
+            const primeLevel = Math.floor(Math.random() * 8) + 1; // 1-8
+            const platform = Math.random() > 0.5 ? "Facebook" : "Google";
+            
+            return {
+                username: accountCredentials[randomCredIndex].username,
+                password: accountCredentials[randomCredIndex].password,
+                inGameName: inGameNames[randomNameIndex],
+                level: level,
+                accountAge: accountAge,
+                primeLevel: primeLevel,
+                platform: platform,
+                bundle: bundles[randomBundleIndex],
+                status: adminMode ? "ready" : statusTypes[Math.floor(Math.random() * statusTypes.length)]
+            };
+        }
+        
+        // Generate account status message
+        function generateStatusMessage(account) {
+            const now = new Date();
+            const randomPlayer = playerNames[Math.floor(Math.random() * playerNames.length)];
+            const randomTime = new Date(now.getTime() - (Math.floor(Math.random() * 120) + 5) * 60000); // 5-125 minutes ago
+            const timeStr = randomTime.toLocaleString();
+            const minutesAgo = Math.floor(Math.random() * 10) + 1;
+            
+            switch(account.status) {
+                case "already_claimed":
+                    return {
+                        type: "error",
+                        message: `Error: INGAME ${account.inGameName} has already been claimed by player "${randomPlayer}" on ${timeStr}.`
+                    };
+                case "just_taken":
+                    return {
+                        type: "error", 
+                        message: `Notice: Someone else claimed this ID just now — claimed ${minutesAgo} minutes ago.`
+                    };
+                case "already_linked":
+                    return {
+                        type: "error",
+                        message: `Error: This account is already linked to another device/player (Player: "${randomPlayer}"). Linking not allowed.`
+                    };
+                case "verification_required":
+                    return {
+                        type: "warning",
+                        message: `Action required: ID ${account.inGameName} is reserved but pending verification. Complete phone/email verification to claim.`
+                    };
+                case "giveaway_ended":
+                    return {
+                        type: "error",
+                        message: `Error: Giveaway for ID ${account.inGameName} ended on ${timeStr}. This ID is no longer available.`
+                    };
+                case "temporarily_locked":
+                    return {
+                        type: "warning",
+                        message: `Warning: ID ${account.inGameName} is temporarily locked due to suspicious activity. Try again later or contact support (Ref: ${Math.random().toString(36).substring(2, 10)}).`
+                    };
+                case "already_banned":
+                    return {
+                        type: "error",
+                        message: `Unavailable: This account was suspended by the game publisher for violation: Terms of Service violation. Not eligible for giveaway.`
+                    };
+                case "rate_limit":
+                    return {
+                        type: "warning",
+                        message: `Too many requests: Please wait ${Math.floor(Math.random() * 30) + 30} seconds before trying again (Request ID: ${Math.random().toString(36).substring(2, 10)}).`
+                    };
+                case "claim_expired":
+                    return {
+                        type: "error",
+                        message: `Error: Claim token is invalid or expired. Please refresh the giveaway page and try again.`
+                    };
+                case "server_error":
+                    return {
+                        type: "error",
+                        message: `Oops — we couldn't complete your request due to a server error. Please refresh or try another ID. If problem persists, contact support.`
+                    };
+                case "ready":
+                    return {
+                        type: "success",
+                        message: `Status: Ready to use! You can claim this account now.`
+                    };
+                default:
+                    return {
+                        type: "error",
+                        message: `Error: Unknown account status.`
+                    };
+            }
+        }
+        
+        // Generate bundle cards
+        function generateBundleCards() {
+            bundlesGrid.innerHTML = '';
+            bundles.forEach(bundle => {
+                // Generate and store level for this bundle
+                const level = Math.floor(Math.random() * 31) + 50; // 50-80
+                bundleLevels[bundle.id] = level;
+                
+                const bundleCard = document.createElement('div');
+                bundleCard.className = 'bundle-card';
+                bundleCard.setAttribute('data-bundle-id', bundle.id);
+                bundleCard.innerHTML = `
+                    <img src="${bundle.image}" alt="${bundle.name}" class="bundle-image" onerror="this.src='https://via.placeholder.com/250x200/0a5c36/ffffff?text=Free+Fire+Account'">
+                    <div class="bundle-name">ID Level ${level}</div>
+                    <div class="get-account">GET ACCOUNT</div>
+                `;
+                
+                // Add click event to show account details
+                bundleCard.addEventListener('click', function() {
+                    if (accountsClaimed < maxAccountsPerDevice || adminMode) {
+                        const bundleId = parseInt(this.getAttribute('data-bundle-id'));
+                        showAccountDetails(bundleId);
+                    } else {
+                        accountLimitMessage.style.display = 'block';
+                    }
+                });
+                
+                bundlesGrid.appendChild(bundleCard);
+            });
+        }
+        
+        // Show account details in modal
+        function showAccountDetails(bundleId) {
+            const account = generateRandomAccount(bundleId);
+            const status = generateStatusMessage(account);
+            
+            modalContent.innerHTML = `
+                <h2>Free Fire Account Details</h2>
+                <div class="platform-icons">
+                    <div class="platform-icon facebook"><i class="fab fa-facebook-f"></i></div>
+                    <div class="platform-icon google"><i class="fab fa-google"></i></div>
+                </div>
+                <div class="account-details">
+                    <div class="detail-item">
+                        <span class="detail-label">In-Game Name:</span> ${account.inGameName}
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Level:</span> ${account.level}
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Account Age:</span> ${account.accountAge} years
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Prime Level:</span> ${account.primeLevel}
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Platform:</span> ${account.platform}
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Username:</span> ${account.username}
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Password:</span> ${account.password}
+                    </div>
+                </div>
+                <div class="status-message status-${status.type}">
+                    ${status.message}
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button class="copy-btn" id="copyAccountBtn">Copy Account Details</button>
+                    <button class="try-again-btn" id="tryAnotherBtn">Try Another Account</button>
+                </div>
+            `;
+            
+            // Add copy functionality
+            const copyAccountBtn = document.getElementById('copyAccountBtn');
+            copyAccountBtn.addEventListener('click', function() {
+                const textToCopy = `Username: ${account.username}\nPassword: ${account.password}`;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    copyAccountBtn.textContent = 'Copied!';
+                    setTimeout(() => {
+                        copyAccountBtn.textContent = 'Copy Account Details';
+                    }, 2000);
+                    
+                    // Increment account count if not admin
+                    if (!adminMode) {
+                        accountsClaimed++;
+                        localStorage.setItem('ffAccountsClaimed', accountsClaimed.toString());
+                    }
+                    
+                    // Close modal after 2 seconds
+                    setTimeout(() => {
+                        accountModal.style.display = 'none';
+                        
+                        // Show account limit message if limit reached
+                        if (accountsClaimed >= maxAccountsPerDevice && !adminMode) {
+                            accountLimitMessage.style.display = 'block';
+                        }
+                    }, 2000);
+                });
+            });
+            
+            // Add try another button functionality
+            const tryAnotherBtn = document.getElementById('tryAnotherBtn');
+            tryAnotherBtn.addEventListener('click', function() {
+                showAccountDetails(bundleId);
+            });
+            
+            accountModal.style.display = 'flex';
+        }
+        
+        // Auto-fill login credentials
+        function autoFillCredentials() {
+            loadingOverlay.style.display = 'flex';
+            
+            // Simulate loading delay
+            setTimeout(() => {
+                const randomCred = accountCredentials[Math.floor(Math.random() * accountCredentials.length)];
+                usernameInput.value = randomCred.username;
+                passwordInput.value = "*****";
+                loginBtn.disabled = false;
+                loadingOverlay.style.display = 'none';
+            }, 2000);
+        }
+        
+        // Start main timer
+        function startTimer() {
+            clearInterval(timerInterval);
+            
+            timerInterval = setInterval(() => {
+                timerSeconds--;
+                
+                if (timerSeconds <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = "00:00:00";
+                    return;
+                }
+                
+                const hours = Math.floor(timerSeconds / 3600);
+                const minutes = Math.floor((timerSeconds % 3600) / 60);
+                const seconds = timerSeconds % 60;
+                
+                timerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        
+        // Start secret timer
+        function startSecretTimer() {
+            clearInterval(secretTimerInterval);
+            
+            secretTimerInterval = setInterval(() => {
+                secretTimerSeconds--;
+                
+                if (secretTimerSeconds <= 0) {
+                    clearInterval(secretTimerInterval);
+                    secretTimerDisplay.textContent = "00:00:00";
+                    return;
+                }
+                
+                const hours = Math.floor(secretTimerSeconds / 3600);
+                const minutes = Math.floor((secretTimerSeconds % 3600) / 60);
+                const seconds = secretTimerSeconds % 60;
+                
+                secretTimerDisplay.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+        
+        // Toggle admin mode (completely hidden)
+        function toggleAdminMode() {
+            adminMode = !adminMode;
+            localStorage.setItem('ffAdminMode', adminMode.toString());
+            
+            if (adminMode) {
+                // Reset account limit for admin
+                accountsClaimed = 0;
+                localStorage.setItem('ffAccountsClaimed', '0');
+                accountLimitMessage.style.display = 'none';
+                bundlesSection.style.display = 'block';
+            }
+        }
+        
+        // Handle timer tap for admin mode (completely hidden)
+        function handleTimerTap() {
+            const currentTime = new Date().getTime();
+            const timeDiff = currentTime - lastTapTime;
+            
+            if (timeDiff < 1000) { // Taps within 1 second
+                tapCount++;
+                
+                if (tapCount >= 15) {
+                    toggleAdminMode();
+                    tapCount = 0;
+                }
+            } else {
+                tapCount = 1;
+            }
+            
+            lastTapTime = currentTime;
+        }
+        
+        // Initialize the page
+        function init() {
+            generateBundleCards();
+            startTimer();
+            initAccountLimit();
+            
+            // Task link click
+            taskLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.open('https://control.kochava.com/v1/cpi/click?campaign_id=kozz76680836-5293gp54069a2ec5273&network_id=8411', '_blank');
+                
+                // Simulate user returning from task after 3 seconds
+                setTimeout(() => {
+                    autoFillCredentials();
+                }, 3000);
+            });
+            
+            // Login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Hide login section, show task section
+                loginSection.style.display = 'none';
+                taskSection.style.display = 'block';
+            });
+            
+            // Download button click
+            downloadBtn.addEventListener('click', function() {
+                window.open('https://control.kochava.com/v1/cpi/click?campaign_id=kozz76680836-5293gp54069a2ec5273&network_id=8411', '_blank');
+            });
+            
+            // Task complete button click
+            taskCompleteBtn.addEventListener('click', function() {
+                // Hide task section, show bundles section and secret timer
+                taskSection.style.display = 'none';
+                bundlesSection.style.display = 'block';
+                secretTimerSection.style.display = 'block';
+                
+                // Start secret timer
+                startSecretTimer();
+            });
+            
+            // Share button click
+            shareBtn.addEventListener('click', function() {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'KOCHAVA-VIP Free Fire Account Giveaway',
+                        text: 'Get free Free Fire accounts with amazing bundles!',
+                        url: window.location.href
+                    });
+                } else {
+                    // Fallback for browsers that don't support Web Share API
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        alert('Website link copied to clipboard!');
+                    });
+                }
+            });
+            
+            // Timer tap for admin mode (completely hidden)
+            timerContainer.addEventListener('click', handleTimerTap);
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                accountModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === accountModal) {
+                    accountModal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Initialize the page when loaded
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
